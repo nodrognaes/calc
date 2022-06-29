@@ -1,0 +1,8 @@
+.display {
+    background-color: aliceblue;
+    width: 85%;
+    text-align: right;
+    padding: 3px 12px;
+    margin: 0 auto 20px;
+    font-size: 25px;
+}

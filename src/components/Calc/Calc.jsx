@@ -1,35 +1,46 @@
 import React, { useState } from 'react'
 
 import Window from '../Window/Window';
+import Button from '../Button/Button';
 import './calc.css';
 
 export default function Calc() {
-  const [total, setTotal] = useState(0);
-  const [display, setDisplay] =useState('0');
+  const [display, setDisplay] = useState('0');
 
-  const nums = [{ 'key': 1 }, { 'key': 2 }, { 'key': 3 }, { 'key': 4 }, { 'key': 5 }, { 'key': 6 }, { 'key': 7 }, { 'key': 8 }, { 'key': 9 }]
+  const handleClick = (key) => {
+    if (/^[0123456789+.x*\/)(-]$/.test(key)) {
+      setDisplay((prev) => {
+        if (prev === '0') {
+          return `${key}`;
+        };
+        return prev + `${key}`;
+      });
+      console.log(display)
+    };
 
+    if (key === 'DEL') {
+      setDisplay((prev) => {
+        if (prev.length > 1) {
+        return prev.slice(0, -1)
+      } else {
+        return '0';
+      }});
+    };
 
-  const add = (key) => {
-    setTotal(total + key);
-    setDisplay(total + key);
-    console.log(key)
-  }
-  
-  const clear = () => {
-    setTotal(0);
-    setDisplay('0');
-  }
-  
+    if (key === 'CLEAR') {
+      setDisplay('0');
+    };
+
+    if (key === 'ENTER') {
+      setDisplay(eval(display));
+    };
+
+  };
+
   return (
     <div className='calc'>
-      <Window display={display}/>
-      {nums.map((n) => {
-        return (
-          <button key={n.key} className='num' onClick={() => add(n.key)}>{n.key}</button>
-        )
-      })}
-      <button onClick={clear}>Clear</button>
+      <Window display={display} />
+      <Button handleClick={handleClick} />
     </div>
   )
 }

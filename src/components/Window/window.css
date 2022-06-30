@@ -1,8 +1,17 @@
+@font-face {
+    font-family: 'digital-7';
+    src: url('../../font/digital-7.ttf')  format('truetype');
+}
+
 .display {
-    background-color: aliceblue;
-    width: 85%;
+    background-color: #8a9762;
+    width: 80%;
     text-align: right;
-    padding: 3px 12px;
+    padding: 3px 15px;
     margin: 0 auto 20px;
-    font-size: 25px;
+    font-size: 40px;
+    font-family: 'digital-7';
+    letter-spacing: 3.5px;
+    border: 4px black double;
+    text-transform: lowercase;
 }

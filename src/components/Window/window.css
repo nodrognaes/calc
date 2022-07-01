@@ -5,10 +5,10 @@
 
 .windowBorder {
     background-color: #8ea47f;
-    padding: 10px 5px 4px 5px;
     border-radius: 10px;
     width: 100%;
-    margin: 0 auto 13px;
+    margin: 0 auto 12px;
+    padding: 10px 5px 5px 5px;
     text-align: left;
     text-transform:capitalize;
     font-variant:small-caps;
@@ -16,12 +16,17 @@
     font-size: 12px;
 }
 
+.windowBorder span {
+    float: right;
+    margin-right: 8px;
+}
+
 .display {
     background-color: #8a9762;
     text-align: right;
-    padding: 60px 15px 5px;
+    padding: 70px 10px 5px;
     margin: 5px auto 1px;
-    font-size: 40px;
+    font-size: 30px;
     font-family: 'digital-7';
     letter-spacing: 3.5px;
     border: 5px rgba(34, 34, 34, 0.645) solid;

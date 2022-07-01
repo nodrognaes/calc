@@ -35,38 +35,37 @@ export default function Calc() {
 
   };
 
-  const handleKeyup = ({ key }) => {
-    if (/^[0123456789+.x*\/)(-]$/.test(key)) {
-      setDisplay((prev) => {
-        if (prev === '0') {
-          return `${key}`;
-        };
-        return prev + `${key}`;
-      });
-    };
-
-    if (key === 'Backspace') {
-      setDisplay((prev) => {
-        if (prev.length > 1) {
-        return prev.slice(0, -1)
-      } else {
-        return '0';
-      }});
-    };
-
-    if (key === 'Enter') {
-      setDisplay(eval(display));
-    };
-
-  };
-
   const [display, setDisplay] = useState('0');
 
   useEffect(() => {
+    const handleKeyup = ({ key }) => {
+      if (/^[0123456789+.x*/)(-]$/.test(key)) {
+        setDisplay((prev) => {
+          if (prev === '0') {
+            return `${key}`;
+          };
+          return prev + `${key}`;
+        });
+      };
+  
+      if (key === 'Backspace') {
+        setDisplay((prev) => {
+          if (prev.length > 1) {
+          return prev.slice(0, -1)
+        } else {
+          return '0';
+        }});
+      };
+  
+      if (key === 'Enter') {
+        setDisplay(eval(display));
+      };
+  
+    };
     window.addEventListener('keyup', handleKeyup);
 
     return () => window.removeEventListener('keyup', handleKeyup);
-}, [handleKeyup]);
+}, [display]);
 
   return (
     <div className='calc'>

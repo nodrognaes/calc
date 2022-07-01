@@ -4,6 +4,8 @@ import './window.css';
 export default function Window({ display }) {
 
   return (
-    <div className='display'>{display}</div>
+    <div className='windowBorder'> ☘ SPG Industries
+      <div className='display'>{display}</div>
+    </div>
   )
 }

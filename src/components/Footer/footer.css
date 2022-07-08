@@ -3,7 +3,11 @@ footer {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: rgba(248, 248, 248, 0.499);
-    height: 30px;
+    background-color: rgba(248, 248, 248, 0.282);
+    height: 25px;
     padding: 5px 0;
+}
+
+marquee {
+    font-size: 9px;
 }

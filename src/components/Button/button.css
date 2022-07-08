@@ -4,7 +4,7 @@
 }
 
 button {
-    margin: 8.5px 4px;
+    margin: 5.5px 4px;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
@@ -50,3 +50,29 @@ button {
     background-color: rgb(46, 46, 46);
     transform: translateY(2px) translateX(2px);
 }
+
+/* #ArrowLeft {
+    height: 45px;
+    width: 32px;
+    border-radius: 25px 30px 30px 25px;
+    margin: 10px 10px;
+}
+
+#ArrowUp {
+    width: 45px;
+    height: 32px;
+    border-radius: 25px 25px 30px 30px;
+    margin: -20px 10px 0;
+}
+
+#ArrowDown {
+    width: 45px;
+    height: 32px;
+    border-radius: 30px 30px 25px 25px;
+}
+
+#ArrowRight {
+    height: 45px;
+    width: 32px;
+    border-radius: 30px 25px 25px 30px;
+} */

@@ -5,6 +5,13 @@ import Button from '../Button/Button';
 import './calc.css';
 
 export default function Calc() {
+  const [display, setDisplay] = useState('0');
+  const [isSnake, setIsSnake] = useState(false);
+
+  const reset = () => {
+    setIsSnake(false);
+    setDisplay('0');
+  };
 
   const handleClick = (key) => {
     if (/^[0123456789+.x*\/)(-]$/.test(key)) {
@@ -26,16 +33,17 @@ export default function Calc() {
     };
 
     if (key === 'CLEAR') {
-      setDisplay('0');
+      isSnake ? reset() : setDisplay('0');
     };
 
     if (key === 'ENTER') {
       setDisplay(eval(display));
+
+      if (display === '96744') {
+        setIsSnake(true);
+      };
     };
-
   };
-
-  const [display, setDisplay] = useState('0');
 
   useEffect(() => {
     const handleKeyup = ({ key }) => {
@@ -59,17 +67,21 @@ export default function Calc() {
   
       if (key === 'Enter') {
         setDisplay(eval(display));
+
+        if (display === '96744') {
+          setIsSnake(true);
+        };
       };
   
     };
     window.addEventListener('keyup', handleKeyup);
 
     return () => window.removeEventListener('keyup', handleKeyup);
-}, [display]);
+}, [display, isSnake]);
 
   return (
     <div className='calc'>
-      <Window display={display} />
+      <Window display={display} isSnake={isSnake} reset={reset}/>
       <Button handleClick={handleClick} />
     </div>
   )

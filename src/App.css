@@ -7,6 +7,7 @@
   left: 0;
   background: rgb(255, 255, 255);
   background: radial-gradient(circle, rgba(255, 255, 255, 1) 25%, rgb(203, 226, 247) 100%);
+  overflow: auto;
 }
 
 .App-logo {

@@ -7,7 +7,7 @@
     background-color: #8ea47f;
     border-radius: 10px;
     width: 100%;
-    margin: 0 auto 15px;
+    margin: 0 auto 12px;
     padding: 10px 5px 5px 5px;
     text-align: left;
     text-transform:capitalize;
@@ -24,7 +24,7 @@
 .display {
     background-color: #8a9762;
     text-align: right;
-    padding: 70px 10px 7.5px;
+    padding: 100px 10px 7.5px;
     margin: 5px auto 1px;
     font-size: 30px;
     font-family: 'digital-7';

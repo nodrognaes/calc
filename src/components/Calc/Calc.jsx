@@ -43,6 +43,24 @@ export default function Calc() {
         setIsSnake(true);
       };
     };
+
+    // if (isSnake) {
+    //   if (key === '⇦') {
+    //     console.log('butts');
+    //   };
+
+    //   if (key === '⇧') {
+    //     console.log('butts');
+    //   };
+
+    //   if (key === '⇨') {
+    //     console.log('butts');
+    //   };
+
+    //   if (key === '⇩') {
+    //     console.log('butts');
+    //   };
+    // }
   };
 
   useEffect(() => {

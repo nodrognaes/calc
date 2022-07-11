@@ -4,7 +4,7 @@ import './footer.css';
 export default function Footer() {
     return (
         <footer>made with <span className='heart'>💚
-            <span className='tooltip'>96744ENTER for a surprise!!~</span>
+            <span className='tooltip'>96744 ENTER</span>
         </span></footer>
     )
 }

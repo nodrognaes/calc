@@ -20,7 +20,7 @@
     display: flex;
     justify-content: space-evenly;
     width: 170px;
-    margin: 5px auto;
+    margin: 0 auto;
     padding: 5px;
 }
 
@@ -30,29 +30,55 @@
     color: #8a9762;
     border: #8a9762 dashed 2px;
     border-radius: 2px;
-    background-color: rgb(62, 62, 62);
+    background-color: rgb(59, 64, 57);
 }
 
 .snakeBtns button:active {
     /* transform: translateY(1px) translateX(1px); */
-    background-color: rgb(49, 49, 49);
+    background-color: rgb(64, 70, 62);
 }
 
 .snakeDot {
     position: absolute;
     height: 8px;
     width: 8px;
-    background-color: rgb(62, 62, 62);
+    background-color: rgb(59, 64, 57);
     border: 2px solid #8a9762;
     border-radius: 3px;
     margin: 0 auto;
+    z-index: 2;
 }
 
 .food {
     position: absolute;
     height: 6px;
     width: 6px;
-    border: 2px solid rgb(62, 62, 62);
+    border: 2px solid rgb(59, 64, 57);
     border-radius: 3px;
     margin: 1px auto 0;
+    z-index: 1;
+}
+
+.exitText {
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    font-size: 14px;
+    z-index: 3;
+    font-weight: bold;
+}
+
+.gameOver {
+    font-size: 45px;
+    text-align: center;
+    margin-top: 6px;
+    letter-spacing: 6px;
+}
+
+.endScreen .snakeBtns {
+    display: flex;
+    justify-content: space-evenly;
+    width: 170px;
+    margin: 0 auto;
+    padding: 5px;
 }

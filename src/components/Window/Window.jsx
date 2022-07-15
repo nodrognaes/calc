@@ -2,7 +2,7 @@ import React from 'react'
 import './window.css';
 import Snake from '../Snake/Snake';
 
-export default function Window({ display, isSnake, reset, isEnded, isStarted, foodCoord, startGame, endGame, snakeDots }) {
+export default function Window({ display, isSnake, reset, isEnded, isStarted, foodCoord, startGame, endGame, snakeDots, moveSnake, direction }) {
 
   return (
     <div className='windowBorder'> ☘ SPG Instruments <span>SG-89</span>
@@ -13,7 +13,7 @@ export default function Window({ display, isSnake, reset, isEnded, isStarted, fo
               foodCoord={foodCoord}
               startGame={startGame}
               endGame={endGame}
-              snakeDots={snakeDots}/> 
+              snakeDots={snakeDots} /> 
               : 
               <div className='display'>{display}</div>}
     </div>

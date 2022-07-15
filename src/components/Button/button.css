@@ -1,10 +1,10 @@
 .btns {
     width: 250px;
-    margin: 0 0 0 -18px;
+    margin: 10px 0 0 -18px;
 }
 
 button {
-    margin: 5.5px 4px;
+    margin: 5.3px 4px;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
     font-weight: bold;
 }

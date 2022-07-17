@@ -58,15 +58,21 @@ export default function Calc() {
   };
 
   const grow = () => {
-    let head = snakeDots[snakeDots.length - 1];
-    if (head[0] === foodCoord[0] && head[1] === foodCoord[1]) {
-      let newSnake = [...snakeDots];
-      newSnake.unshift([])
-      setSnakeDots(newSnake);
-      randomCoord();
-      setSpeed((prev) => prev - 25)
-    }
+    let newSnake = [...snakeDots];
+    newSnake.unshift([])
+    setSnakeDots(newSnake);
   }
+
+  let head = snakeDots[snakeDots.length - 1];
+  if (head[0] === foodCoord[0] && head[1] === foodCoord[1]) {
+    grow();
+    randomCoord();
+    setSpeed((prev) => prev - 25)
+  }
+
+  // useEffect(() => {
+  //   console.log('butt')
+  // }, [grow])
 
   const hitSelf = () => {
     let snake = [...snakeDots];
@@ -184,6 +190,10 @@ export default function Calc() {
         if (display === '96744') {
           setIsSnake(true);
         };
+
+        if (isSnake && !isStarted && !isEnded) {
+          startGame();
+        }
       };
 
       if (isSnake && isStarted) {
@@ -221,8 +231,6 @@ export default function Calc() {
           reset();
         };
       }
-      console.log(snakeDots)
-      console.log(foodCoord)
     };
     window.addEventListener('keydown', handleKeydown);
 
@@ -234,13 +242,12 @@ export default function Calc() {
   useEffect(() => {
     if (isStarted) {
       const startMove = setInterval(() => moveSnake(direction), speed);
-      grow();
       hitSelf();
 
       return () => clearInterval(startMove);
 
     }
-  }, [foodCoord, snakeDots, isStarted, direction, moveSnake, speed, hitSelf, grow])
+  }, [foodCoord, snakeDots, isStarted, direction, moveSnake, speed, hitSelf])
 
   return (
     <div className='calc'>

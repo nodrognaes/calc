@@ -44,10 +44,3 @@ footer {
     visibility: visible;
     opacity: 0.8;
 }
-
-@media screen and (max-height: 655px) {
-    footer {
-        position: sticky;
-        min-height: 23px;
-    }
-  }

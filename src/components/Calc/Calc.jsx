@@ -7,6 +7,7 @@ import './calc.css';
 export default function Calc() {
   const [display, setDisplay] = useState('0');
   const [isSnake, setIsSnake] = useState(false);
+  const [calculated, setCalculated] = useState(false);
 
   //for snake
   const [isStarted, setIsStarted] = useState(false);
@@ -70,10 +71,6 @@ export default function Calc() {
     setSpeed((prev) => prev - 25)
   }
 
-  // useEffect(() => {
-  //   console.log('butt')
-  // }, [grow])
-
   const hitSelf = () => {
     let snake = [...snakeDots];
     let head = snake[snake.length - 1];
@@ -110,12 +107,17 @@ export default function Calc() {
 
   const handleClick = (key) => {
     if (/^[0123456789+.x*\/)(-]$/.test(key)) {
-      setDisplay((prev) => {
-        if (prev === '0') {
-          return `${key}`;
-        };
-        return prev + `${key}`;
-      });
+      if (calculated) {
+        setCalculated(false);
+        setDisplay(`${key}`);
+      } else {
+        setDisplay((prev) => {
+          if (prev === '0') {
+            return `${key}`;
+          };
+          return prev + `${key}`;
+        });
+      }
     };
 
     if (key === 'DEL') {
@@ -134,6 +136,7 @@ export default function Calc() {
 
     if (key === 'ENTER') {
       setDisplay(eval(display));
+      setCalculated(true);
 
       if (display === '96744') {
         setIsSnake(true);

@@ -169,12 +169,17 @@ export default function Calc() {
   useEffect(() => {
     const handleKeydown = ({ key }) => {
       if (/^[0123456789+.x*/)(-]$/.test(key)) {
-        setDisplay((prev) => {
-          if (prev === '0') {
-            return `${key}`;
-          };
-          return prev + `${key}`;
-        });
+        if (calculated) {
+          setCalculated(false);
+          setDisplay(`${key}`);
+        } else {
+          setDisplay((prev) => {
+            if (prev === '0') {
+              return `${key}`;
+            };
+            return prev + `${key}`;
+          });
+        }
       };
 
       if (key === 'Backspace') {
@@ -189,6 +194,7 @@ export default function Calc() {
 
       if (key === 'Enter') {
         setDisplay(eval(display));
+        setCalculated(true);
 
         if (display === '96744') {
           setIsSnake(true);

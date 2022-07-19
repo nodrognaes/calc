@@ -51,6 +51,7 @@
 
 .food {
     position: absolute;
+    background-color: #8a9762;
     height: 6px;
     width: 6px;
     border: 2px solid rgb(59, 64, 57);

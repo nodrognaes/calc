@@ -15,7 +15,7 @@ export default function Calc() {
   const [foodCoord, setFoodCoord] = useState([]);
   const [snakeDots, setSnakeDots] = useState([[0, 0]]);
   const [direction, setDirection] = useState('RIGHT');
-  const [speed, setSpeed] = useState(500);
+  const [speed, setSpeed] = useState(600);
 
   //for snake
   const randomCoord = () => {
@@ -68,7 +68,7 @@ export default function Calc() {
   if (head[0] === foodCoord[0] && head[1] === foodCoord[1]) {
     grow();
     randomCoord();
-    setSpeed((prev) => prev - 25)
+    setSpeed((prev) => prev - 15)
   }
 
   const hitSelf = () => {

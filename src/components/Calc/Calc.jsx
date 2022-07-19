@@ -108,8 +108,18 @@ export default function Calc() {
   const handleClick = (key) => {
     if (/^[0123456789+.x*\/)(-]$/.test(key)) {
       if (calculated) {
-        setCalculated(false);
-        setDisplay(`${key}`);
+        if (/^[0123456789]$/.test(key)) {
+          setCalculated(false);
+          setDisplay(`${key}`);
+        } else {
+          setCalculated(false);
+          setDisplay((prev) => {
+            if (prev === '0') {
+              return `${key}`;
+            };
+            return prev + `${key}`;
+          });
+        }
       } else {
         setDisplay((prev) => {
           if (prev === '0') {
@@ -170,8 +180,18 @@ export default function Calc() {
     const handleKeydown = ({ key }) => {
       if (/^[0123456789+.x*/)(-]$/.test(key)) {
         if (calculated) {
-          setCalculated(false);
-          setDisplay(`${key}`);
+          if (/^[0123456789]$/.test(key)) {
+            setCalculated(false);
+            setDisplay(`${key}`);
+          } else {
+            setCalculated(false);
+            setDisplay((prev) => {
+              if (prev === '0') {
+                return `${key}`;
+              };
+              return prev + `${key}`;
+            });
+          }
         } else {
           setDisplay((prev) => {
             if (prev === '0') {

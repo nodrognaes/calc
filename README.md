@@ -10,4 +10,4 @@ You can either click the buttons on the calculator, or use your keyboard to type
 
 ## Demo:
 
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/48900910/180903977-b874f1f7-e911-4f95-909e-75fc5a0950d4.gif)
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/48900910/180904177-0f22ea1d-bc0c-4b85-9bc5-3a3696d1fd48.gif)

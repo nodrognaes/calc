@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 
-import Window from '../Window/Window';
-import Button from '../Button/Button';
-import './calc.css';
+import Window from "../Window/Window";
+import Button from "../Button/Button";
+import "./calc.css";
 
 export default function Calc() {
-  const [display, setDisplay] = useState('0');
+  const [display, setDisplay] = useState("0");
   const [isSnake, setIsSnake] = useState(false);
   const [calculated, setCalculated] = useState(false);
 
@@ -14,7 +14,7 @@ export default function Calc() {
   const [isEnded, setIsEnded] = useState(false);
   const [foodCoord, setFoodCoord] = useState([]);
   const [snakeDots, setSnakeDots] = useState([[0, 0]]);
-  const [direction, setDirection] = useState('RIGHT');
+  const [direction, setDirection] = useState("RIGHT");
   const [speed, setSpeed] = useState(550);
 
   //for snake
@@ -27,7 +27,7 @@ export default function Calc() {
     let y = Math.floor((Math.random() * (maxY - min + 1) + min) / 10) * 10;
 
     setFoodCoord([x, y]);
-  }
+  };
 
   const moveSnake = (dir) => {
     const snakeBody = [...snakeDots];
@@ -35,19 +35,19 @@ export default function Calc() {
 
     if (dir === "LEFT") {
       head = [head[0], head[1] - 10];
-    };
+    }
 
     if (dir === "DOWN") {
-      head = [head[0] + 10, head[1]]
-    };
+      head = [head[0] + 10, head[1]];
+    }
 
     if (dir === "RIGHT") {
-      head = [head[0], head[1] + 10]
-    };
+      head = [head[0], head[1] + 10];
+    }
 
     if (dir === "UP") {
-      head = [head[0] - 10, head[1]]
-    };
+      head = [head[0] - 10, head[1]];
+    }
 
     snakeBody.push(head);
     snakeBody.shift();
@@ -60,27 +60,27 @@ export default function Calc() {
 
   const grow = () => {
     let newSnake = [...snakeDots];
-    newSnake.unshift([])
+    newSnake.unshift([]);
     setSnakeDots(newSnake);
-  }
+  };
 
   let head = snakeDots[snakeDots.length - 1];
   if (head[0] === foodCoord[0] && head[1] === foodCoord[1]) {
     grow();
     randomCoord();
-    setSpeed((prev) => prev - 10)
+    setSpeed((prev) => prev - 10);
   }
 
   const hitSelf = () => {
     let snake = [...snakeDots];
     let head = snake[snake.length - 1];
     snake.pop();
-    snake.forEach(dot => {
+    snake.forEach((dot) => {
       if (head[0] === dot[0] && head[1] === dot[1]) {
         endGame();
       }
-    })
-  }
+    });
+  };
 
   const startGame = () => {
     setIsStarted(true);
@@ -88,19 +88,19 @@ export default function Calc() {
     setSnakeDots([[0, 0]]);
     randomCoord();
     setSpeed(500);
-  }
+  };
 
   const endGame = () => {
     setIsStarted(false);
     setIsEnded(true);
-    setDirection('RIGHT');
-  }
+    setDirection("RIGHT");
+  };
 
   const reset = () => {
     setIsSnake(false);
-    setDisplay('0');
+    setDisplay("0");
     setSnakeDots([[0, 0]]);
-    setDirection('RIGHT');
+    setDirection("RIGHT");
     setIsEnded(false);
     setIsStarted(false);
   };
@@ -114,159 +114,183 @@ export default function Calc() {
         } else {
           setCalculated(false);
           setDisplay((prev) => {
-            if (prev === '0') {
+            if (prev === "0") {
               return `${key}`;
-            };
+            }
             return prev + `${key}`;
           });
         }
       } else {
         setDisplay((prev) => {
-          if (prev === '0') {
+          if (prev === "0") {
             return `${key}`;
-          };
+          }
           return prev + `${key}`;
         });
       }
-    };
+    }
 
-    if (key === 'DEL') {
+    if (key === "DEL") {
       setDisplay((prev) => {
         if (prev.length > 1) {
-          return prev.slice(0, -1)
+          return prev.slice(0, -1);
         } else {
-          return '0';
+          return "0";
         }
       });
-    };
+    }
 
-    if (key === 'CLEAR') {
-      isSnake ? reset() : setDisplay('0');
-    };
+    if (key === "CLEAR") {
+      isSnake ? reset() : setDisplay("0");
+    }
 
-    if (key === 'ENTER') {
+    if (key === "ENTER") {
       setDisplay(eval(display));
       setCalculated(true);
 
-      if (display === '96744') {
+      if (display === "96744") {
         setIsSnake(true);
-      };
-    };
+      }
+    }
 
     if (isSnake) {
-      if (key === '⇦') {
-        moveSnake('LEFT');
-        setDirection('LEFT');
-      };
+      if (key === "⇦") {
+        moveSnake("LEFT");
+        setDirection("LEFT");
+      }
 
-      if (key === '⇧') {
-        moveSnake('UP');
-        setDirection('UP')
-      };
+      if (key === "⇧") {
+        moveSnake("UP");
+        setDirection("UP");
+      }
 
-      if (key === '⇨') {
-        moveSnake('RIGHT');
-        setDirection('RIGHT')
-      };
+      if (key === "⇨") {
+        moveSnake("RIGHT");
+        setDirection("RIGHT");
+      }
 
-      if (key === '⇩') {
-        moveSnake('DOWN');
-        setDirection('DOWN');
-      };
+      if (key === "⇩") {
+        moveSnake("DOWN");
+        setDirection("DOWN");
+      }
+    }
+  };
+
+  const handleKeydown = ({ key }) => {
+    if (/^[0123456789+.x*/)(-]$/.test(key)) {
+      if (calculated) {
+        if (/^[0123456789]$/.test(key)) {
+          setCalculated(false);
+          setDisplay(`${key}`);
+        } else {
+          setCalculated(false);
+          setDisplay((prev) => {
+            if (prev === "0") {
+              return `${key}`;
+            }
+            return prev + `${key}`;
+          });
+        }
+      } else {
+        setDisplay((prev) => {
+          if (prev === "0") {
+            return `${key}`;
+          }
+          return prev + `${key}`;
+        });
+      }
+    }
+
+    if (key === "Backspace") {
+      setDisplay((prev) => {
+        if (prev.length > 1) {
+          return prev.slice(0, -1);
+        } else {
+          return "0";
+        }
+      });
+    }
+
+    if (key === "Enter") {
+      setDisplay(eval(display));
+      setCalculated(true);
+
+      if (display === "96744") {
+        setIsSnake(true);
+      }
+
+      if (isSnake && !isStarted && !isEnded) {
+        startGame();
+      }
+    }
+
+    if (isSnake && isStarted) {
+      if (key === "ArrowUp") {
+        moveSnake("UP");
+        setDirection("UP");
+      }
+
+      if (key === "ArrowDown") {
+        moveSnake("DOWN");
+        setDirection("DOWN");
+      }
+
+      if (key === "ArrowLeft") {
+        moveSnake("LEFT");
+        setDirection("LEFT");
+      }
+
+      if (key === "ArrowRight") {
+        moveSnake("RIGHT");
+        setDirection("RIGHT");
+      }
+
+      if (key === "Backspace") {
+        reset();
+      }
+    }
+
+    if (isEnded) {
+      if (key === "Enter") {
+        startGame();
+      }
+
+      if (key === "Backspace") {
+        reset();
+      }
+    }
+  };
+
+  const def = (e) => {
+    if (isSnake && 
+      ["Space", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].indexOf(
+        e.code
+      ) > -1
+    ) {
+      e.preventDefault();
     }
   };
 
   useEffect(() => {
-    const handleKeydown = ({ key }) => {
-      if (/^[0123456789+.x*/)(-]$/.test(key)) {
-        if (calculated) {
-          if (/^[0123456789]$/.test(key)) {
-            setCalculated(false);
-            setDisplay(`${key}`);
-          } else {
-            setCalculated(false);
-            setDisplay((prev) => {
-              if (prev === '0') {
-                return `${key}`;
-              };
-              return prev + `${key}`;
-            });
-          }
-        } else {
-          setDisplay((prev) => {
-            if (prev === '0') {
-              return `${key}`;
-            };
-            return prev + `${key}`;
-          });
-        }
-      };
-
-      if (key === 'Backspace') {
-        setDisplay((prev) => {
-          if (prev.length > 1) {
-            return prev.slice(0, -1)
-          } else {
-            return '0';
-          }
-        });
-      };
-
-      if (key === 'Enter') {
-        setDisplay(eval(display));
-        setCalculated(true);
-
-        if (display === '96744') {
-          setIsSnake(true);
-        };
-
-        if (isSnake && !isStarted && !isEnded) {
-          startGame();
-        }
-      };
-
-      if (isSnake && isStarted) {
-        if (key === 'ArrowUp') {
-          moveSnake('UP');
-          setDirection('UP');
-        };
-
-        if (key === 'ArrowDown') {
-          moveSnake('DOWN');
-          setDirection('DOWN');
-        };
-
-        if (key === 'ArrowLeft') {
-          moveSnake('LEFT');
-          setDirection('LEFT');
-        };
-
-        if (key === 'ArrowRight') {
-          moveSnake('RIGHT');
-          setDirection('RIGHT');
-        };
-
-        if (key === 'Backspace') {
-          reset();
-        };
-      }
-
-      if (isEnded) {
-        if (key === 'Enter') {
-          startGame();
-        };
-
-        if (key === 'Backspace') {
-          reset();
-        };
-      }
-    };
-    window.addEventListener('keydown', handleKeydown);
+    window.addEventListener("keydown", def);
+    window.addEventListener("keydown", handleKeydown);
 
     return () => {
-      window.removeEventListener('keydown', handleKeydown);
-    }
-  }, [display, isSnake, direction, snakeDots, moveSnake, isEnded, startGame, isStarted, foodCoord]);
+      window.removeEventListener("keydown", def);
+      window.removeEventListener("keydown", handleKeydown);
+    };
+  }, [
+    display,
+    isSnake,
+    direction,
+    snakeDots,
+    moveSnake,
+    isEnded,
+    startGame,
+    isStarted,
+    foodCoord,
+    handleKeydown,
+  ]);
 
   useEffect(() => {
     if (isStarted) {
@@ -274,13 +298,13 @@ export default function Calc() {
       hitSelf();
 
       return () => clearInterval(startMove);
-
     }
-  }, [foodCoord, snakeDots, isStarted, direction, moveSnake, speed, hitSelf])
+  }, [foodCoord, snakeDots, isStarted, direction, moveSnake, speed, hitSelf]);
 
   return (
-    <div className='calc'>
-      <Window display={display}
+    <div className="calc">
+      <Window
+        display={display}
         isSnake={isSnake}
         reset={reset}
         isStarted={isStarted}
@@ -292,5 +316,5 @@ export default function Calc() {
       />
       <Button handleClick={handleClick} />
     </div>
-  )
+  );
 }
